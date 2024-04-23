@@ -1,9 +1,17 @@
 <script lang="ts">
-	import { useHover, windowSize, title, network } from '$lib/index.js';
+	import { useHover, windowSize, title, network, mediaQuery } from '$lib/index.js';
 
 	const [isHovered, hoverRef] = useHover();
 	const titleStore = title();
-	const networkStore = network()
+	const networkStore = network();
+
+	/*******************/
+	/*┌───────────────┐*/
+	/*│ MEDIA QUERIES │*/
+	/*└───────────────┘*/
+	/*******************/
+	const isLarge = mediaQuery('(min-width: 1024px)');
+	const isPortrait = mediaQuery('(orientation: portrait)')
 
 	const { width, height } = windowSize();
 </script>
@@ -41,6 +49,15 @@
 		<div style="display: flex; flex-direction: column;">
 			<span>{$networkStore.state}</span>
 			<span>{$networkStore.since}</span>
+		</div>
+	</div>
+
+	<div>
+		<h3>Media Queries</h3>
+
+		<div style="display: flex; flex-direction: column;">
+			<span><b>Is Large:</b> {$isLarge}</span>
+			<span><b>Is Portrait:</b> {$isPortrait}</span>
 		</div>
 	</div>
 </main>
