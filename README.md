@@ -1,47 +1,97 @@
-# Svocal
+# Nutzlich
 
-Svocal combines the power of Svelte stores with localstorage.
+A bunch of useful svelte utilities.
 
 ## Installation
 
 ```bash
-npm i svocal
+npm i nutzlich
 ```
 
 ```bash
-yarn add svocal
+yarn add nutzlich
 ```
 
 ```bash
-pnpm add svocal
+pnpm add nutzlich
 ```
 
 ```bash
-bun add svocal
+bun add nutzlich
 ```
 
-## Usage
+## Quick-Guide
 
-Import `localstorage`:
+### Hover
 
-```ts
-import { localstorage } from 'svocal';
+```svelte
+<script>
+    import { useHover } from "nutzlich";
+
+    const [isHovered, hoverRef] = useHover();
+</script>
+
+<div use:hoverRef>
+    {$isHovered ? "Hovered" : "Not hovered"}
+</div>
 ```
 
-Then you can start using the localstorage:
+### Window Size
 
-```ts
-const store = = localstorage('demo', 1)
-const store2 = = localstorage('demo', 1)
+```svelte
+<script>
+    import { windowSize } from "nutzlich";
+
+    const { width, height } = windowSize();
+</script>
+
+<b>Width</b> {$width}
+<b>Height</b> {$height}
 ```
 
-`store` and `store2` both use the localstorage key `demo` so when you set store store2 will also update.
+### Title
 
-```ts
-store.set(42);
-store2.subscribe(console.log);
+```svelte
+<script>
+    import { title } from "nutzlich";
+
+    const titleStore = title()
+</script>
+
+<label>Update title</label>
+<input
+    type="text"
+    bind:value={$titleStore}
+/>
 ```
 
-Will console.log 42
+### Network
 
-This even works with different tabs, so svocal can be used to sync state between tabs and windows!
+```svelte
+<script>
+    import { network } from "nutzlich";
+
+    const networkStore = network()
+</script>
+
+<span>
+    Since {$networkStore.since.toLocaleString()} {$networkStore.state}
+</span>
+```
+
+
+### Media Query
+
+```svelte
+<script>
+    import { mediaQuery } from "nutzlich";
+
+	const isLarge = mediaQuery('(min-width: 1024px)');
+	const isPortrait = mediaQuery('(orientation: portrait)')
+</script>
+
+<span>
+    Is large: {$isLarge} <br />
+    Is Portrait: {$isPortrait}
+</span>
+```
