@@ -6,10 +6,14 @@
 		network,
 		mediaQuery,
 		useInterval,
-		counter
+		counter,
+		useSize
 	} from '$lib/index.js';
 
 	const [isHovered, hoverRef] = useHover();
+
+	const [domeleSize, sizeRef] = useSize();
+
 	const titleStore = title();
 
 	titleStore.set('on the server');
@@ -82,6 +86,13 @@
 		<h3>Counter + Interval</h3>
 
 		{$counterStore}
+	</div>
+
+	<div use:sizeRef style="outline: 1px solid red;">
+		<h3>useSize</h3>
+
+		<span><b>Width:</b> {$domeleSize?.width}</span>
+		<span><b>Height:</b> {$domeleSize?.height}</span>
 	</div>
 </main>
 
