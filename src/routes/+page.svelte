@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { useHover, windowSize, title, network, mediaQuery } from '$lib/index.js';
+	import {
+		useHover,
+		windowSize,
+		title,
+		network,
+		mediaQuery,
+		useInterval,
+		counter
+	} from '$lib/index.js';
 
 	const [isHovered, hoverRef] = useHover();
 	const titleStore = title();
@@ -17,6 +25,12 @@
 	const isPortrait = mediaQuery('(orientation: portrait)');
 
 	const { width, height } = windowSize();
+
+	const counterStore = counter();
+
+	useInterval(() => {
+		counterStore.inc();
+	}, 1_000);
 </script>
 
 <main>
@@ -62,6 +76,12 @@
 			<span><b>Is Large:</b> {$isLarge}</span>
 			<span><b>Is Portrait:</b> {$isPortrait}</span>
 		</div>
+	</div>
+
+	<div>
+		<h3>Counter + Interval</h3>
+
+		{$counterStore}
 	</div>
 </main>
 
