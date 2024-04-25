@@ -14,6 +14,9 @@ export const counter = (start = 0) => {
 		dec(amount = 1) {
 			update((old) => old - amount);
 			return get({ subscribe });
+		},
+		reset() {
+			set(start);
 		}
 	};
 };
