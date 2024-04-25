@@ -26,13 +26,13 @@ bun add nutzlich
 
 ```svelte
 <script>
-    import { useHover } from "nutzlich";
+	import { useHover } from 'nutzlich';
 
-    const [isHovered, hoverRef] = useHover();
+	const [isHovered, hoverRef] = useHover();
 </script>
 
 <div use:hoverRef>
-    {$isHovered ? "Hovered" : "Not hovered"}
+	{$isHovered ? 'Hovered' : 'Not hovered'}
 </div>
 ```
 
@@ -40,58 +40,57 @@ bun add nutzlich
 
 ```svelte
 <script>
-    import { windowSize } from "nutzlich";
+	import { windowSize } from 'nutzlich';
 
-    const { width, height } = windowSize();
+	const { width, height } = windowSize();
 </script>
 
-<b>Width</b> {$width}
-<b>Height</b> {$height}
+<b>Width</b>
+{$width}
+<b>Height</b>
+{$height}
 ```
 
 ### Title
 
 ```svelte
 <script>
-    import { title } from "nutzlich";
+	import { title } from 'nutzlich';
 
-    const titleStore = title()
+	const titleStore = title();
 </script>
 
 <label>Update title</label>
-<input
-    type="text"
-    bind:value={$titleStore}
-/>
+<input type="text" bind:value={$titleStore} />
 ```
 
 ### Network
 
 ```svelte
 <script>
-    import { network } from "nutzlich";
+	import { network } from 'nutzlich';
 
-    const networkStore = network()
+	const networkStore = network();
 </script>
 
 <span>
-    Since {$networkStore.since.toLocaleString()} {$networkStore.state}
+	Since {$networkStore.since.toLocaleString()}
+	{$networkStore.state}
 </span>
 ```
-
 
 ### Media Query
 
 ```svelte
 <script>
-    import { mediaQuery } from "nutzlich";
+	import { mediaQuery } from 'nutzlich';
 
 	const isLarge = mediaQuery('(min-width: 1024px)');
-	const isPortrait = mediaQuery('(orientation: portrait)')
+	const isPortrait = mediaQuery('(orientation: portrait)');
 </script>
 
 <span>
-    Is large: {$isLarge} <br />
-    Is Portrait: {$isPortrait}
+	Is large: {$isLarge} <br />
+	Is Portrait: {$isPortrait}
 </span>
 ```

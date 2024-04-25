@@ -3,6 +3,9 @@
 
 	const [isHovered, hoverRef] = useHover();
 	const titleStore = title();
+
+	titleStore.set('on the server');
+
 	const networkStore = network();
 
 	/*******************/
@@ -11,7 +14,7 @@
 	/*└───────────────┘*/
 	/*******************/
 	const isLarge = mediaQuery('(min-width: 1024px)');
-	const isPortrait = mediaQuery('(orientation: portrait)')
+	const isPortrait = mediaQuery('(orientation: portrait)');
 
 	const { width, height } = windowSize();
 </script>
