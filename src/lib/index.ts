@@ -1,4 +1,5 @@
 export { useHover } from './use/hover.js';
+export { useIdle } from './use/idle.js';
 export { useSize } from './use/size.js';
 export { windowSize } from './window/size.js';
 export { title } from './document/title.js';

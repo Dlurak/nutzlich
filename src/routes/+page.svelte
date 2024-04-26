@@ -1,6 +1,7 @@
 <script lang="ts">
 	import {
 		useHover,
+		useIdle,
 		windowSize,
 		title,
 		network,
@@ -35,6 +36,8 @@
 	useInterval(() => {
 		counterStore.inc();
 	}, 1_000);
+
+	const isIdle = useIdle();
 </script>
 
 <main>
@@ -93,6 +96,12 @@
 
 		<span><b>Width:</b> {$domeleSize?.width}</span>
 		<span><b>Height:</b> {$domeleSize?.height}</span>
+	</div>
+
+	<div>
+		<h3>useIdle</h3>
+
+		<span>{$isIdle ? 'Idle' : 'Not Idle'}</span>
 	</div>
 </main>
 
