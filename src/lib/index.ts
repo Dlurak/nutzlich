@@ -8,3 +8,4 @@ export { mediaQuery } from './document/mediaQuery.js';
 export { useToggle } from './general/toggle.js';
 export { useInterval } from './use/interval.js';
 export { counter } from './general/counter.js';
+export { clickOutside } from '$lib/use/clickOutside.js';

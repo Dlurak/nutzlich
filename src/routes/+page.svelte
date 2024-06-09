@@ -8,7 +8,8 @@
 		mediaQuery,
 		useInterval,
 		counter,
-		useSize
+		useSize,
+		clickOutside
 	} from '$lib/index.js';
 
 	const [isHovered, hoverRef] = useHover();
@@ -102,6 +103,19 @@
 		<h3>useIdle</h3>
 
 		<span>{$isIdle ? 'Idle' : 'Not Idle'}</span>
+	</div>
+
+	<div
+		style="outline: 1px solid red;"
+		use:clickOutside={{
+			callback() {
+				window.alert('You clicked outside of me');
+			}
+		}}
+	>
+		<h3>clickOutside</h3>
+
+		<span>Click outside of me</span>
 	</div>
 </main>
 
